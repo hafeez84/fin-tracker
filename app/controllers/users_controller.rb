@@ -7,4 +7,8 @@ class UsersController < ApplicationController
 	def my_friends
 		@frnds = current_user.friends
 	end
+
+	def search
+		
+	end
 end
