@@ -1,11 +1,18 @@
 class Stock < ActiveRecord::Base
+	has_many :user_stocks
+	has_many :users, through: :user_stocks
+
+	
  def self.new_from_lookup(ticker_symbol)
  	begin
         looked_up_stock = StockQuote::Stock.quote(ticker_symbol)
-        new(name: looked_up_stock.company_name, last_price: looked_up_stock.latest_price ) 		
+        Stock.new(name: looked_up_stock.company_name, thicker: looked_up_stock.symbol, last_price: looked_up_stock.latest_price ) 		
  	rescue Exception => e
  		return nil
  	end
 
-   end
+ end
+ def self.find_by_ticker(symbol)
+ 	where(thicker: symbol).first
+ end
 end
