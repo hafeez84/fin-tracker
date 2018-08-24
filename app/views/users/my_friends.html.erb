@@ -1,0 +1,35 @@
+<% if @frnds.size > 0 %>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th colspan="3" class="page-header">
+					<h2> My friends</h2>
+				</th>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @frnds.each do |f| %>
+				<tr>
+					<td> <%= f.full_name %></td>
+					<td> <%= f.email %></td>
+					<td> <%= link_to "Profile", user_path(f), class: "btn btn-info btn-xs" %> 
+						<%= link_to "Unfriend", friendship_path(f), method: :delete, data: {confirm: "Are you sure ?"}, class: "btn btn-danger btn-xs" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+<% else %>
+	<div class="row col-md-12">
+		<p class="lead">
+			You don't have any friends yet...
+		</p>
+	</div>
+<% end %>
