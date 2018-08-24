@@ -1,1 +1,3 @@
 Finance Tracker Rails App. Under development.
+You can have look here: 
+https://warm-inlet-30462.herokuapp.com/
